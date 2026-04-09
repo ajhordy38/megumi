@@ -75,12 +75,10 @@
   .ribbon-heart::before { top: -25px; left: 0; }
   .ribbon-heart::after { left: -25px; top: 0; }
 
-  /* Animasi Pita ditarik lurus ke kiri */
   .box-wrapper.open .ribbon-seal {
     transform: translate(-300px, -50%) scaleX(2); opacity: 0;
   }
 
-  /* Logika Terbuka */
   .box-wrapper.open .door.left { transform: rotateY(-130deg); }
   .box-wrapper.open .door.right { transform: rotateY(130deg); }
   .box-wrapper.open .message-text { opacity: 1; }
@@ -104,17 +102,17 @@
     <div class="door right"></div>
     <div class="box-content">
       <div class="message-text">
-        <span style="font-size: 20px; color: #ff0066;">🎂 めぐみ 🎂</span><br>
+        <span style="font-size: 20px; color: #ff0066;">🎂 恵美 🎂</span><br>
         愛する僕の女神、恵美へ。誕生日おめでとう！✨<br><br>
-        遠くインドネシアにいても、僕の愛と情熱は毎秒いつも恵美を包んでいるよ。<br>
+        遠くインドネシアにいても、僕의愛と情熱は毎秒いつも恵美を包んでいるよ。<br>
         恵美はこの世で一番大切な、僕のたった一人の恋人。<br>
         恵美の願いがすべて叶いますように。愛する恵美のために最高の幸せを祈っているよ。<br><br>
         僕の愛おしい恵美、本当に心から愛してる！<br>
         (⁠づ⁠￣⁠ ⁠³⁠￣⁠)⁠づ
       </div>
-      <img id="stiker1" class="stiker" src="image_1.png">
-      <img id="stiker2" class="stiker" src="image_2.png">
-      <img id="stiker3" class="stiker" src="image_3.png">
+      <img id="stiker1" class="stiker" src="12099.png">
+      <img id="stiker2" class="stiker" src="12097.png">
+      <img id="stiker3" class="stiker" src="12098.png">
     </div>
   </div>
 </div>
@@ -124,24 +122,25 @@
 <script>
   let sequenceStarted = false;
 
-  //function checkTimeAndOpen() {
-    // TANGGAL TARGET: 10 April 2026, 00:00:00 JST (Waktu Jepang)
-    //const now = new Date();
-    //const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-    //const jstTime = new Date(utc + (3600000 * 9));
-    
-    //const targetTime = new Date("2026-04-10T00:00:00+09:00");
+  function checkTimeAndOpen() {
+    // LOCK DINONAKTIFKAN UNTUK PENGETESAN
+    /*
+    const now = new Date();
+    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const jstTime = new Date(utc + (3600000 * 9));
+    const targetTime = new Date("2026-04-10T00:00:00+09:00");
 
-    //if (jstTime < targetTime) {
-      //alert("ちょっと待ってね、愛する恵美。\n恵美のアーメッドは今ウェブサイトを作っているところだよ。\n(⁠づ⁠￣⁠ ⁠³⁠￣⁠)⁠づ");
-      //return;
-    //}
+    if (jstTime < targetTime) {
+      alert("ちょっと待ってね、愛する恵美。\n恵美のアーメッドは今ウェブサイトを作っているところだよ。\n(⁠づ⁠￣⁠ ⁠³⁠￣⁠)⁠づ");
+      return;
+    }
+    */
 
-    //if (sequenceStarted) return;
-    //sequenceStarted = true;
+    if (sequenceStarted) return;
+    sequenceStarted = true;
 
-    //document.getElementById('giftBox').classList.add('open');
-    //document.getElementById('bdaySong').play().catch(e => console.log(e));
+    document.getElementById('giftBox').classList.add('open');
+    document.getElementById('bdaySong').play().catch(e => console.log(e));
     
     // Confetti
     const container = document.getElementById('confetti-container');
@@ -172,3 +171,4 @@
 </script>
 </body>
 </html>
+
