@@ -112,9 +112,9 @@
         僕の愛おしい恵美、本当に心から愛してる！<br>
         (⁠づ⁠￣⁠ ⁠³⁠￣⁠)⁠づ
       </div>
-      <img id="stiker1" class="stiker" src="12099.png">
-      <img id="stiker2" class="stiker" src="12097.png">
-      <img id="stiker3" class="stiker" src="12098.png">
+      <img id="stiker1" class="stiker" src="image_1.png">
+      <img id="stiker2" class="stiker" src="image_2.png">
+      <img id="stiker3" class="stiker" src="image_3.png">
     </div>
   </div>
 </div>
@@ -124,24 +124,24 @@
 <script>
   let sequenceStarted = false;
 
-  function checkTimeAndOpen() {
+  //function checkTimeAndOpen() {
     // TANGGAL TARGET: 10 April 2026, 00:00:00 JST (Waktu Jepang)
-    const now = new Date();
-    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-    const jstTime = new Date(utc + (3600000 * 9));
+    //const now = new Date();
+    //const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    //const jstTime = new Date(utc + (3600000 * 9));
     
-    const targetTime = new Date("2026-04-10T00:00:00+09:00");
+    //const targetTime = new Date("2026-04-10T00:00:00+09:00");
 
-    if (jstTime < targetTime) {
-      alert("ちょっと待ってね、愛する恵美。\n恵美のアーメッドは今ウェブサイトを作っているところだよ。\n(⁠づ⁠￣⁠ ⁠³⁠￣⁠)⁠づ");
-      return;
-    }
+    //if (jstTime < targetTime) {
+      //alert("ちょっと待ってね、愛する恵美。\n恵美のアーメッドは今ウェブサイトを作っているところだよ。\n(⁠づ⁠￣⁠ ⁠³⁠￣⁠)⁠づ");
+      //return;
+    //}
 
-    if (sequenceStarted) return;
-    sequenceStarted = true;
+    //if (sequenceStarted) return;
+    //sequenceStarted = true;
 
-    document.getElementById('giftBox').classList.add('open');
-    document.getElementById('bdaySong').play().catch(e => console.log(e));
+    //document.getElementById('giftBox').classList.add('open');
+    //document.getElementById('bdaySong').play().catch(e => console.log(e));
     
     // Confetti
     const container = document.getElementById('confetti-container');
