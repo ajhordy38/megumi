@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday My Goddess</title>
 <style>
-  /* GAYA DASAR RESPONSpath */
+  /* GAYA DASAR RESPONSIP */
   body {
     background-color: #ffe0f0; 
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Agar bisa scroll di layar kecil */
+    min-height: 100vh; 
     font-family: 'Times New Roman', Times, serif; 
     margin: 0;
-    overflow-x: hidden; /* Mencegah scrollbar horizontal */
+    overflow-x: hidden; 
     position: relative;
-    padding: 20px; /* Jarak aman di layar sangat kecil */
+    padding: 20px; 
     box-sizing: border-box;
   }
 
@@ -25,18 +25,17 @@
   .bg-heart { position: absolute; color: #ff99cc; font-size: 20px; opacity: 0; animation: fallingHeart 4s linear forwards; }
   @keyframes fallingHeart { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.8; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
 
-  /* --- AMPLOB RESPONS path --- */
+  /* --- AMPLOP RESPONSIP --- */
   .box-wrapper {
     perspective: 2000px;
-    width: 350px; /* Lebar ponsel ideal */
-    max-width: 100%; /* Agar tidak meluap di layar sangat kecil */
+    width: 350px; 
+    max-width: 100%; 
     height: 500px;
     cursor: pointer;
     position: relative;
     z-index: 10;
   }
   
-  /* Untuk tablet dan desktop, biarkan lebar tetap */
   @media (min-width: 481px) {
     .box-wrapper { width: 350px; height: 500px; }
   }
@@ -52,20 +51,18 @@
   .message-text {
     font-size: 15px; line-height: 1.7; color: #b3005c; font-weight: bold; opacity: 0; 
     transition: opacity 0.5s ease 0.8s; text-align: center;
-    position: relative; z-index: 2; /* Di atas stiker */
+    position: relative; z-index: 2; 
   }
 
-  /* --- STIKER DENGAN UKURAN RELATIF path --- */
-  .stiker { position: absolute; width: auto; max-width: 25%; /* Membatasi lebar stiker */ object-fit: contain; z-index: 1; mix-blend-mode: multiply; }
+  /* --- STIKER DENGAN UKURAN RELATIF --- */
+  .stiker { position: absolute; width: auto; max-width: 25%; object-fit: contain; z-index: 1; mix-blend-mode: multiply; }
   
-  /* Posisi stiker hasil revisi Ahmed, disesuaikan agar tidak menabrak hati besar */
-  #stiker1 { bottom: 15px; left: 10px; width: 65px; } /* Balon, tidak berubah */
-  
-  #stiker2 { top: 75px; /* Diturunkan dari posisi hati besar */ right: 15px; width: 50px; } /* Peluk */
-  
-  #stiker3 { bottom: 45px; right: 15px; width: 70px; } /* Cium Tangan */
+  /* Posisi stiker yang sudah direvisi */
+  #stiker1 { bottom: 15px; left: 10px; width: 65px; } /* Balon - Tetap */
+  #stiker2 { top: 25px; right: 15px; width: 50px; } /* Peluk - Dinaikkan ke atas */
+  #stiker3 { bottom: 15px; right: 15px; width: 70px; } /* Cium Tangan - Diturunkan sejajar stiker 1 */
 
-  /* --- PINTU AMPLOB --- */
+  /* --- PINTU AMPLOP --- */
   .door {
     position: absolute; width: 50%; height: 100%; top: 0;
     background: linear-gradient(135deg, #ff66a3, #ff1a75); z-index: 2;
@@ -90,20 +87,18 @@
   .ribbon-heart::before { top: -25px; left: 0; }
   .ribbon-heart::after { left: -25px; top: 0; }
 
-  /* Animasi Pita ditarik lurus ke kiri */
   .box-wrapper.open .ribbon-seal {
     transform: translate(-300px, -50%) scaleX(2); opacity: 0;
   }
 
-  /* Logika Terbuka */
   .box-wrapper.open .door.left { transform: rotateY(-130deg); }
   .box-wrapper.open .door.right { transform: rotateY(130deg); }
   .box-wrapper.open .message-text { opacity: 1; }
 
-  /* --- HATI BESAR BERDENYUT path --- */
+  /* --- HATI BESAR BERDENYUT --- */
   .large-heart {
-    position: absolute; top: 10px; left: 10px; font-size: 55px; /* Besar dan di pojok kiri atas */
-    z-index: 3; /* Di atas stiker, di bawah pita segel */
+    position: absolute; top: 10px; left: 10px; font-size: 55px; 
+    z-index: 3; 
     animation: heartPulse 1.5s infinite;
   }
   @keyframes heartPulse {
@@ -135,7 +130,7 @@
       <div class="message-text">
         <span style="font-size: 20px; color: #ff0066;">🎂 めぐみ 🎂</span><br>
         愛する僕の女神、恵美へ。誕生日おめでとう！✨<br><br>
-        遠くインドネシアにいても、僕의愛と情熱は毎秒いつも恵美を包んでいるよ。<br>
+        遠くインドネシアにいても、僕の愛と情熱は毎秒いつも恵美を包んでいるよ。<br>
         恵美はこの世で一番大切な、僕のたった一人の恋人。<br>
         恵美の願いがすべて叶いますように。愛する恵美のために最高の幸せを祈っているよ。<br><br>
         僕の愛おしい恵美、本当に心から愛してる！<br>
@@ -154,7 +149,7 @@
   let sequenceStarted = false;
 
   function checkTimeAndOpen() {
-    // LOCK DINONAKTIFKAN UNTUK PENGETESAN
+    // LOCK SAAT INI DINONAKTIFKAN UNTUK PENGETESAN AKHIR
     /*
     const now = new Date();
     const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
