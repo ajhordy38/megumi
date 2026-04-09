@@ -150,7 +150,7 @@
 
   function checkTimeAndOpen() {
     // LOCK SAAT INI DINONAKTIFKAN UNTUK PENGETESAN AKHIR
-    /*
+    
     const now = new Date();
     const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
     const jstTime = new Date(utc + (3600000 * 9));
@@ -160,7 +160,7 @@
       alert("ちょっと待ってね、愛する恵美。\n恵美のアーメッドは今ウェブサイトを作っているところだよ。\n(⁠づ⁠￣⁠ ⁠³⁠￣⁠)⁠づ");
       return;
     }
-    */
+    
 
     if (sequenceStarted) return;
     sequenceStarted = true;
