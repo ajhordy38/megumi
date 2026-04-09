@@ -6,25 +6,25 @@
 <title>A Special Surprise for My Goddess</title>
 <style>
   body {
-    background-color: #ffe0f0; /* Pink pastel yang sangat lembut */
+    background-color: #ffe0f0; 
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: 'Times New Roman', Times, serif; /* Kesan klasik dan romantis */
+    font-family: 'Times New Roman', Times, serif; 
     margin: 0;
-    overflow: hidden; /* Mencegah scrollbar saat confetti jatuh */
+    overflow: hidden; 
     position: relative;
   }
 
-  /* --- EFEK HATI JATUH DI BELAKANG (Z-INDEX 0) --- */
+  /* --- EFEK HATI JATUH DI BELAKANG --- */
   #heart-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; /* Di belakang amplop */
+    z-index: 0; 
     pointer-events: none;
   }
   .bg-heart {
@@ -39,7 +39,7 @@
     100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
   }
 
-  /* --- KOTAK/AMPLOP UTAMA (Z-INDEX 10) --- */
+  /* --- KOTAK/AMPLOP UTAMA --- */
   .box-wrapper {
     perspective: 2000px;
     width: 350px;
@@ -54,8 +54,6 @@
     position: relative;
     transform-style: preserve-3d;
   }
-
-  /* --- CSS BARU UNTUK KOTAK KONTEN AGAR BISA MEMUAT STIKER ABSOLUT --- */
   .box-content {
     position: absolute;
     width: 100%;
@@ -68,25 +66,24 @@
     align-items: center;
     padding: 30px;
     box-sizing: border-box;
-    z-index: 1; /* Di belakang pintu */
+    z-index: 1; 
     border: 3px solid #ff99cc;
-    position: relative; /* Menjadi wadah untuk posisi absolut stiker */
+    position: relative; 
   }
 
-  /* Wadah untuk teks ucapan agar berada di atas stiker */
+  /* --- TEKS UCAPAN --- */
   .text-container {
     position: relative;
-    z-index: 2; /* Di atas stiker */
+    z-index: 2; 
     text-align: center;
   }
-
   .message-text {
-    font-size: 18px;
+    font-size: 16px; /* Disesuaikan sedikit agar lebih pas dengan stiker */
     line-height: 1.8;
     color: #b3005c;
     font-weight: bold;
-    opacity: 0; /* Sembunyi sampai kotak terbuka */
-    transition: opacity 0.5s ease 0.5s; /* Muncul perlahan setelah pintu terbuka */
+    opacity: 0; 
+    transition: opacity 0.5s ease 0.5s; 
   }
 
   /* --- GAYA UNTUK STIKER BARU --- */
@@ -94,31 +91,29 @@
     position: absolute;
     width: auto;
     object-fit: contain;
-    z-index: 1; /* Di bawah teks */
-    box-shadow: 2px 2px 10px rgba(255,153,204,0.3); /* Sedikit bayangan */
+    z-index: 1; 
+    /* Menghilangkan background hitam kalau gambar aslinya tidak transparan murni */
+    mix-blend-mode: multiply; 
   }
 
-  /* Posisi spesifik untuk setiap stiker */
+  /* Posisi spesifik stiker hasil revisi */
   #stiker1 {
-    bottom: 10px; /* Di sudut kiri bawah */
+    bottom: 15px; 
     left: 10px;
-    width: 70px; /* Mickey Minnie Balon */
+    width: 65px; 
   }
-
   #stiker2 {
-    top: 10px; /* Di sudut kanan atas */
-    right: 10px;
-    width: 80px; /* Mickey Minnie Peluk */
+    top: 25px; 
+    right: 15px;
+    width: 50px; /* Sudah dikecilkan agar tidak menimpa teks */
   }
-
   #stiker3 {
-    bottom: 60px; /* Di bawah teks, di tengah */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px; /* Mickey Minnie Cium Tangan */
+    bottom: 45px; 
+    right: 15px; /* Dipindah ke area kanan kosong */
+    width: 70px; /* Sudah dikecilkan */
   }
 
-  /* --- SISA CSS LAMA (PINTU, CONFETTI, KARAKTER) --- */
+  /* --- PINTU AMPLOP --- */
   .door {
     position: absolute;
     width: 50%; 
@@ -146,6 +141,8 @@
     transform-origin: right center; 
     border-left: 1px solid #ffb3d9; 
   }
+  
+  /* --- HATI DENYUT --- */
   .heart-icon {
     font-size: 50px;
     color: white;
@@ -160,40 +157,19 @@
     100% { transform: scale(1); opacity: 0.9; }
   }
 
-  /* LOGIKA BUKA AMPLOP */
+  /* --- LOGIKA BUKA AMPLOP --- */
   .box-wrapper.open .door.left { transform: rotateY(-130deg); }
   .box-wrapper.open .door.right { transform: rotateY(130deg); }
   .box-wrapper.open .message-text { opacity: 1; }
   .box-wrapper.open .heart-icon { opacity: 0; }
 
-  /* KARAKTER EMOJI (Z-INDEX 15) */
-  .character {
-    position: absolute;
-    bottom: 20vh; 
-    font-size: 80px; /* Ukuran emojinya */
-    z-index: 15;
-    transition: transform 2.5s ease-in-out; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Memberi sedikit bayangan agar emoji menonjol */
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.2); 
-  }
-  
-  #mickey { left: -200px; }
-  #minnie { right: -200px; }
-  
-  /* Animasi menuju tengah layar */
-  #mickey.walk-in { transform: translateX(calc(50vw + 30px)); }
-  #minnie.walk-in { transform: translateX(calc(-50vw - 30px)); }
-
-  /* --- EFEK LEDAKAN CONFETTI KE DEPAN (Z-INDEX 9999) --- */
+  /* --- CONFETTI --- */
   #confetti-container {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 0; height: 0;
-    z-index: 9999; /* PALING DEPAN */
+    z-index: 9999; 
     pointer-events: none;
   }
   .confetti-piece {
@@ -213,21 +189,17 @@
 <body>
 
 <div id="heart-container"></div>
-
 <div id="confetti-container"></div>
-
-<div id="mickey" class="character">🐭🎩</div>
-<div id="minnie" class="character">🎀🐭</div>
 
 <div class="box-wrapper" id="giftBox" onclick="startSequence()">
   <div class="heart-icon pulse" id="mainHeart">❤️</div>
   <div class="box-container">
     <div class="door left"></div>
     <div class="door right"></div>
+    
     <div class="box-content">
-      
       <div class="text-container message-text">
-        <span style="font-size: 24px; color: #ff0066;">🎂 Megumi 🎂</span><br>
+        <span style="font-size: 22px; color: #ff0066;">🎂 Megumi 🎂</span><br>
         愛する僕の女神、誕生日おめでとう！✨<br><br>
         遠くインドネシアにいても、僕の愛と守護神としての守りは毎秒いつも君を包んでいるよ。<br><br>
         君はこの世で一番大切な僕のたった一人のお姫様だよ。<br><br>
@@ -235,10 +207,9 @@
         (⁠つ⁠≧⁠▽⁠≦⁠)⁠つ
       </div>
 
-      <img id="stiker1" class="stiker" src="image_1.png" alt="Mickey Minnie Balon">
-      <img id="stiker2" class="stiker" src="image_2.png" alt="Mickey Minnie Peluk">
-      <img id="stiker3" class="stiker" src="image_3.png" alt="Mickey Minnie Cium Tangan">
-      
+      <img id="stiker1" class="stiker" src="12099.png" alt="Balon">
+      <img id="stiker2" class="stiker" src="12097.png" alt="Peluk">
+      <img id="stiker3" class="stiker" src="12098.png" alt="Cium Tangan">
     </div>
   </div>
 </div>
@@ -252,25 +223,11 @@
     if (sequenceStarted) return;
     sequenceStarted = true;
 
-    // 1. Karakter Jalan Masuk
-    document.getElementById('mickey').classList.add('walk-in');
-    document.getElementById('minnie').classList.add('walk-in');
-
-    // 2. Tunggu 2.5 detik sampai karakter di tengah, lalu jalankan kejutan
-    setTimeout(() => {
-      // Buka Amplop
-      document.getElementById('giftBox').classList.add('open');
-      
-      // Putar Lagu
-      document.getElementById('bdaySong').play().catch(e => console.log(e));
-
-      // Ledakan Confetti ke Layar
-      burstConfetti();
-
-      // Mulai Hati Berjatuhan di Latar Belakang
-      startFallingHearts();
-      
-    }, 2500); // Waktu jeda karakter jalan (2.5 detik)
+    // Langsung buka amplop tanpa jeda waktu karena animasi tikus dihapus
+    document.getElementById('giftBox').classList.add('open');
+    document.getElementById('bdaySong').play().catch(e => console.log(e));
+    burstConfetti();
+    startFallingHearts();
   }
 
   function burstConfetti() {
@@ -282,19 +239,15 @@
       piece.classList.add('confetti-piece');
       piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
       
-      // Hitung arah acak menyebar (lingkaran 360 derajat)
       const angle = Math.random() * Math.PI * 2;
-      const velocity = 150 + Math.random() * 300; // Jarak tembakan confetti
+      const velocity = 150 + Math.random() * 300; 
       const tx = Math.cos(angle) * velocity + 'px';
       const ty = Math.sin(angle) * velocity + 'px';
       
       piece.style.setProperty('--tx', tx);
       piece.style.setProperty('--ty', ty);
       
-      // Bentuk acak (kotak atau memanjang)
-      if (Math.random() > 0.5) {
-        piece.style.borderRadius = '50%';
-      }
+      if (Math.random() > 0.5) piece.style.borderRadius = '50%';
 
       container.appendChild(piece);
       setTimeout(() => piece.remove(), 1500);
@@ -303,21 +256,17 @@
 
   function startFallingHearts() {
     const container = document.getElementById('heart-container');
-    
-    // Looping terus menerus
     setInterval(() => {
       const heart = document.createElement('div');
       heart.classList.add('bg-heart');
       heart.innerHTML = '❤️';
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (Math.random() * 3 + 3) + 's'; // Kecepatan jatuh acak
-      heart.style.fontSize = (Math.random() * 15 + 10) + 'px'; // Ukuran hati acak
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's'; 
+      heart.style.fontSize = (Math.random() * 15 + 10) + 'px'; 
       
       container.appendChild(heart);
-      
-      // Hapus memori setelah animasi selesai
       setTimeout(() => heart.remove(), 6000);
-    }, 300); // Munculkan hati baru setiap 0.3 detik
+    }, 300); 
   }
 </script>
 
