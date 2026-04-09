@@ -5,16 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday My Goddess</title>
 <style>
+  /* GAYA DASAR RESPONSpath */
   body {
     background-color: #ffe0f0; 
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* Agar bisa scroll di layar kecil */
     font-family: 'Times New Roman', Times, serif; 
     margin: 0;
-    overflow: hidden; 
+    overflow-x: hidden; /* Mencegah scrollbar horizontal */
     position: relative;
+    padding: 20px; /* Jarak aman di layar sangat kecil */
+    box-sizing: border-box;
   }
 
   /* --- LATAR BELAKANG HATI --- */
@@ -22,15 +25,22 @@
   .bg-heart { position: absolute; color: #ff99cc; font-size: 20px; opacity: 0; animation: fallingHeart 4s linear forwards; }
   @keyframes fallingHeart { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.8; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
 
-  /* --- AMPLOP --- */
+  /* --- AMPLOB RESPONS path --- */
   .box-wrapper {
     perspective: 2000px;
-    width: 350px;
+    width: 350px; /* Lebar ponsel ideal */
+    max-width: 100%; /* Agar tidak meluap di layar sangat kecil */
     height: 500px;
     cursor: pointer;
     position: relative;
     z-index: 10;
   }
+  
+  /* Untuk tablet dan desktop, biarkan lebar tetap */
+  @media (min-width: 481px) {
+    .box-wrapper { width: 350px; height: 500px; }
+  }
+
   .box-container { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; }
   .box-content {
     position: absolute; width: 100%; height: 100%; background-color: #fff; border-radius: 15px;
@@ -42,15 +52,20 @@
   .message-text {
     font-size: 15px; line-height: 1.7; color: #b3005c; font-weight: bold; opacity: 0; 
     transition: opacity 0.5s ease 0.8s; text-align: center;
+    position: relative; z-index: 2; /* Di atas stiker */
   }
 
-  /* --- STIKER --- */
-  .stiker { position: absolute; width: auto; object-fit: contain; z-index: 1; mix-blend-mode: multiply; }
-  #stiker1 { bottom: 15px; left: 10px; width: 65px; }
-  #stiker2 { top: 25px; right: 15px; width: 50px; }
-  #stiker3 { bottom: 45px; right: 15px; width: 70px; }
+  /* --- STIKER DENGAN UKURAN RELATIF path --- */
+  .stiker { position: absolute; width: auto; max-width: 25%; /* Membatasi lebar stiker */ object-fit: contain; z-index: 1; mix-blend-mode: multiply; }
+  
+  /* Posisi stiker hasil revisi Ahmed, disesuaikan agar tidak menabrak hati besar */
+  #stiker1 { bottom: 15px; left: 10px; width: 65px; } /* Balon, tidak berubah */
+  
+  #stiker2 { top: 75px; /* Diturunkan dari posisi hati besar */ right: 15px; width: 50px; } /* Peluk */
+  
+  #stiker3 { bottom: 45px; right: 15px; width: 70px; } /* Cium Tangan */
 
-  /* --- PINTU AMPLOP --- */
+  /* --- PINTU AMPLOB --- */
   .door {
     position: absolute; width: 50%; height: 100%; top: 0;
     background: linear-gradient(135deg, #ff66a3, #ff1a75); z-index: 2;
@@ -75,13 +90,27 @@
   .ribbon-heart::before { top: -25px; left: 0; }
   .ribbon-heart::after { left: -25px; top: 0; }
 
+  /* Animasi Pita ditarik lurus ke kiri */
   .box-wrapper.open .ribbon-seal {
     transform: translate(-300px, -50%) scaleX(2); opacity: 0;
   }
 
+  /* Logika Terbuka */
   .box-wrapper.open .door.left { transform: rotateY(-130deg); }
   .box-wrapper.open .door.right { transform: rotateY(130deg); }
   .box-wrapper.open .message-text { opacity: 1; }
+
+  /* --- HATI BESAR BERDENYUT path --- */
+  .large-heart {
+    position: absolute; top: 10px; left: 10px; font-size: 55px; /* Besar dan di pojok kiri atas */
+    z-index: 3; /* Di atas stiker, di bawah pita segel */
+    animation: heartPulse 1.5s infinite;
+  }
+  @keyframes heartPulse {
+    0% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.9; }
+  }
 
   /* --- CONFETTI --- */
   #confetti-container { position: absolute; top: 50%; left: 50%; z-index: 9999; pointer-events: none; }
@@ -101,8 +130,10 @@
     <div class="door left"></div>
     <div class="door right"></div>
     <div class="box-content">
+      <div class="large-heart">❤️</div>
+
       <div class="message-text">
-        <span style="font-size: 20px; color: #ff0066;">🎂 めぐみ 🎂</span><br><br>
+        <span style="font-size: 20px; color: #ff0066;">🎂 めぐみ 🎂</span><br>
         愛する僕の女神、恵美へ。誕生日おめでとう！✨<br><br>
         遠くインドネシアにいても、僕의愛と情熱は毎秒いつも恵美を包んでいるよ。<br>
         恵美はこの世で一番大切な、僕のたった一人の恋人。<br>
@@ -171,4 +202,3 @@
 </script>
 </body>
 </html>
-
