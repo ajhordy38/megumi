@@ -151,16 +151,18 @@
   function checkTimeAndOpen() {
     // LOCK SAAT INI DINONAKTIFKAN UNTUK PENGETESAN AKHIR
     
+    function checkTimeAndOpen() {
+    // TANGGAL TARGET: 10 April 2026, 00:00:00 JST (Waktu Jepang)
     const now = new Date();
     const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
     const jstTime = new Date(utc + (3600000 * 9));
+    
     const targetTime = new Date("2026-04-10T00:00:00+09:00");
 
     if (jstTime < targetTime) {
       alert("ちょっと待ってね、愛する恵美。\n恵美のアーメッドは今ウェブサイトを作っているところだよ。\n(⁠づ⁠￣⁠ ⁠³⁠￣⁠)⁠づ");
       return;
     }
-    
 
     if (sequenceStarted) return;
     sequenceStarted = true;
