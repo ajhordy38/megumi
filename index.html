@@ -6,14 +6,14 @@
 <title>A Special Surprise for My Goddess</title>
 <style>
   body {
-    background-color: #ffe0f0; 
+    background-color: #ffe0f0; /* Pink pastel yang sangat lembut */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: 'Times New Roman', Times, serif; 
+    font-family: 'Times New Roman', Times, serif; /* Kesan klasik dan romantis */
     margin: 0;
-    overflow: hidden; 
+    overflow: hidden; /* Mencegah scrollbar saat confetti jatuh */
     position: relative;
   }
 
@@ -54,6 +54,8 @@
     position: relative;
     transform-style: preserve-3d;
   }
+
+  /* --- CSS BARU UNTUK KOTAK KONTEN AGAR BISA MEMUAT STIKER ABSOLUT --- */
   .box-content {
     position: absolute;
     width: 100%;
@@ -66,18 +68,57 @@
     align-items: center;
     padding: 30px;
     box-sizing: border-box;
-    z-index: 1; 
+    z-index: 1; /* Di belakang pintu */
     border: 3px solid #ff99cc;
+    position: relative; /* Menjadi wadah untuk posisi absolut stiker */
   }
+
+  /* Wadah untuk teks ucapan agar berada di atas stiker */
+  .text-container {
+    position: relative;
+    z-index: 2; /* Di atas stiker */
+    text-align: center;
+  }
+
   .message-text {
     font-size: 18px;
     line-height: 1.8;
     color: #b3005c;
-    text-align: center;
     font-weight: bold;
-    opacity: 0; 
-    transition: opacity 0.5s ease 0.5s; 
+    opacity: 0; /* Sembunyi sampai kotak terbuka */
+    transition: opacity 0.5s ease 0.5s; /* Muncul perlahan setelah pintu terbuka */
   }
+
+  /* --- GAYA UNTUK STIKER BARU --- */
+  .stiker {
+    position: absolute;
+    width: auto;
+    object-fit: contain;
+    z-index: 1; /* Di bawah teks */
+    box-shadow: 2px 2px 10px rgba(255,153,204,0.3); /* Sedikit bayangan */
+  }
+
+  /* Posisi spesifik untuk setiap stiker */
+  #stiker1 {
+    bottom: 10px; /* Di sudut kiri bawah */
+    left: 10px;
+    width: 70px; /* Mickey Minnie Balon */
+  }
+
+  #stiker2 {
+    top: 10px; /* Di sudut kanan atas */
+    right: 10px;
+    width: 80px; /* Mickey Minnie Peluk */
+  }
+
+  #stiker3 {
+    bottom: 60px; /* Di bawah teks, di tengah */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px; /* Mickey Minnie Cium Tangan */
+  }
+
+  /* --- SISA CSS LAMA (PINTU, CONFETTI, KARAKTER) --- */
   .door {
     position: absolute;
     width: 50%; 
@@ -85,7 +126,7 @@
     top: 0;
     background: linear-gradient(135deg, #ff66a3, #ff1a75);
     backface-visibility: hidden;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* DIPERCEPAT */
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 2; 
     display: flex;
     justify-content: center;
@@ -125,33 +166,26 @@
   .box-wrapper.open .message-text { opacity: 1; }
   .box-wrapper.open .heart-icon { opacity: 0; }
 
-  /* --- KARAKTER MICKEY & MINNIE (Z-INDEX 15) --- */
+  /* KARAKTER EMOJI (Z-INDEX 15) */
   .character {
     position: absolute;
-    bottom: 20vh; /* Sesuaikan tinggi agar pas di amplop */
-    width: 150px; /* Lebar GIF */
-    height: 150px; /* Tinggi GIF */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center bottom;
+    bottom: 20vh; 
+    font-size: 80px; /* Ukuran emojinya */
     z-index: 15;
-    transition: transform 2.5s ease-in-out; /* Durasi jalan ke tengah */
+    transition: transform 2.5s ease-in-out; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Memberi sedikit bayangan agar emoji menonjol */
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.2); 
   }
-  /* Posisi awal di luar layar */
-  #mickey {
-    left: -200px; 
-    /* MASUKKAN LINK GAMBAR GIF MICKEY BERJALAN TRANSOARAN DI SINI */
-    background-image: url('MASUKKAN_LINK_GIF_MICKEY_DISINI'); 
-  }
-  #minnie {
-    right: -200px;
-    /* MASUKKAN LINK GAMBAR GIF MINNIE BERJALAN TRANSPARAN DI SINI */
-    background-image: url('MASUKKAN_LINK_GIF_MINNIE_DISINI'); 
-  }
+  
+  #mickey { left: -200px; }
+  #minnie { right: -200px; }
+  
   /* Animasi menuju tengah layar */
-  #mickey.walk-in { transform: translateX(calc(50vw + 50px)); }
-  #minnie.walk-in { transform: translateX(calc(-50vw - 50px)); }
-
+  #mickey.walk-in { transform: translateX(calc(50vw + 30px)); }
+  #minnie.walk-in { transform: translateX(calc(-50vw - 30px)); }
 
   /* --- EFEK LEDAKAN CONFETTI KE DEPAN (Z-INDEX 9999) --- */
   #confetti-container {
@@ -167,7 +201,6 @@
     width: 10px;
     height: 10px;
     opacity: 1;
-    /* Variabel CSS akan diisi via JS untuk arah ledakan */
     animation: burstConfetti 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   }
   @keyframes burstConfetti {
@@ -183,8 +216,8 @@
 
 <div id="confetti-container"></div>
 
-<div id="mickey" class="character"></div>
-<div id="minnie" class="character"></div>
+<div id="mickey" class="character">🐭🎩</div>
+<div id="minnie" class="character">🎀🐭</div>
 
 <div class="box-wrapper" id="giftBox" onclick="startSequence()">
   <div class="heart-icon pulse" id="mainHeart">❤️</div>
@@ -192,7 +225,8 @@
     <div class="door left"></div>
     <div class="door right"></div>
     <div class="box-content">
-      <div class="message-text">
+      
+      <div class="text-container message-text">
         <span style="font-size: 24px; color: #ff0066;">🎂 Megumi 🎂</span><br>
         愛する僕の女神、誕生日おめでとう！✨<br><br>
         遠くインドネシアにいても、僕の愛と守護神としての守りは毎秒いつも君を包んでいるよ。<br><br>
@@ -200,11 +234,16 @@
         早く会いたいな。<br>本当に大好きだよ！🌹💖<br><br>
         (⁠つ⁠≧⁠▽⁠≦⁠)⁠つ
       </div>
+
+      <img id="stiker1" class="stiker" src="image_1.png" alt="Mickey Minnie Balon">
+      <img id="stiker2" class="stiker" src="image_2.png" alt="Mickey Minnie Peluk">
+      <img id="stiker3" class="stiker" src="image_3.png" alt="Mickey Minnie Cium Tangan">
+      
     </div>
   </div>
 </div>
 
-<audio id="bdaySong" src="MASUKKAN_LINK_LAGU_HAPPY_BIRTHDAY_DISINI.mp3"></audio>
+<audio id="bdaySong" src="lagu.mp3"></audio>
 
 <script>
   let sequenceStarted = false;
